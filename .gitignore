@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# build
+/dist/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# editor
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# package locks
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# os
+.DS_Store
+Thumbs.db
