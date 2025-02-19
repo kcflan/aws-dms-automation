@@ -9,7 +9,7 @@ This script helps you start AWS DMS replication tasks with ease. It
 - ✅ Validates required environment variables.
 - ✅ Initializes the AWS DMS client.
 - ✅ Manages the replication tasks automatically.
-- ✅ Waits in a loop, while the status is updated to the screen every minute.
+- ✅ Waits in a loop, while the status is updated to the screen every 60 seconds (by default).
 
 ### 🚀 Purpose
 
