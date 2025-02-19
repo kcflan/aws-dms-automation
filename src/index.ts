@@ -14,6 +14,7 @@ export const validateEnv = () => {
     "REPLICATION_SECRET_ACCESS_KEY",
     "REPLICATION_TASK_ARN",
     "REPLICATION_REGION",
+    "REPLICATION_INSTANCE_ARN",
   ];
 
   for (const envVar of requiredEnvVars) {
