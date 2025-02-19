@@ -6,17 +6,17 @@
 
 This script helps you start AWS DMS replication tasks with ease. It
 
-✅ Validates required environment variables.
-✅ Initializes the AWS DMS client.
-✅ Manages the replication tasks automatically.
+- ✅ Validates required environment variables.
+- ✅ Initializes the AWS DMS client.
+- ✅ Manages the replication tasks automatically.
 
 ### 🚀 Purpose
 
 #### This script exists because I'm cost-conscious. 💰😆 Instead of letting an expensive dms.r5.large instance run indefinitely, I use this automation to start, and manage AWS DMS replication tasks efficiently
 
-✅ Transfers data using a dms.r5.large instance for faster migrations.
-✅ Allows me to manually downgrade the instance after migration to save costs.
-✅ Prevents unnecessary AWS charges by stopping tasks when not in use.
+- ✅ Transfers data using a dms.r5.large instance for faster migrations.
+- ✅ Allows me to manually downgrade the instance after migration to save costs.
+- ✅ Prevents unnecessary AWS charges by stopping tasks when not in use.
 
 Because why pay more when a little automation can keep things efficient? 🤖💸
 
@@ -24,11 +24,11 @@ Because why pay more when a little automation can keep things efficient? 🤖�
 
 Set the following environment variables in your .env file
 
-🌍 REPLICATION_REGION: AWS region where your DMS replication task is located.
-🔑 REPLICATION_ACCESS_KEY_ID: Your AWS access key ID.
-🔒 REPLICATION_SECRET_ACCESS_KEY: Your AWS secret access key.
-📜 REPLICATION_TASK_ARN: The ARN of the DMS replication task.
-🖥️ REPLICATION_INSTANCE_ARN: The ARN of the DMS replication instance.
+- 🌍 REPLICATION_REGION: AWS region where your DMS replication task is located.
+- 🔑 REPLICATION_ACCESS_KEY_ID: Your AWS access key ID.
+- 🔒 REPLICATION_SECRET_ACCESS_KEY: Your AWS secret access key.
+- 📜 REPLICATION_TASK_ARN: The ARN of the DMS replication task.
+- 🖥️ REPLICATION_INSTANCE_ARN: The ARN of the DMS replication instance.
 
 ### 📂 Project Structure
 
