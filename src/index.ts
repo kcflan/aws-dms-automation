@@ -6,7 +6,7 @@ dotenv.config();
 validateEnv();
 
 // Main function to start and stop the replication task
-const main = async () => {
+export const main = async () => {
   try {
     await startDMSReplication();
     await stopDMSReplication();
