@@ -1,6 +1,10 @@
-import { DatabaseMigrationServiceClient, DescribeReplicationTasksCommand, StartReplicationTaskCommand } from "@aws-sdk/client-database-migration-service";
+import {
+  DatabaseMigrationServiceClient,
+  DescribeReplicationTasksCommand,
+  StartReplicationTaskCommand,
+} from "@aws-sdk/client-database-migration-service";
 import { mockClient } from "aws-sdk-client-mock";
-import { startDMSReplication } from "./index";
+import { startDMSReplication } from "./tasks/replicationTasks";
 
 const dmsMock = mockClient(DatabaseMigrationServiceClient);
 
@@ -48,14 +52,19 @@ describe("startDMSReplication", () => {
     });
   });
 
-  it("should not start the replication task if it is already running", async () => {
+  it("should start the replication task if it is already running", async () => {
     dmsMock.on(DescribeReplicationTasksCommand).resolves({
       ReplicationTasks: [{ Status: "running" }],
     });
 
     await startDMSReplication();
 
-    expect(dmsMock.commandCalls(StartReplicationTaskCommand)).toHaveLength(0);
+    expect(dmsMock.commandCalls(StartReplicationTaskCommand)).toHaveLength(1);
+    const commandCalls = dmsMock.commandCalls(StartReplicationTaskCommand);
+    expect(commandCalls[0].args[0].input).toEqual({
+      ReplicationTaskArn: "test-arn",
+      StartReplicationTaskType: "resume-processing",
+    });
   });
 
   it("should not start the replication task if it is in 'testing' state", async () => {
