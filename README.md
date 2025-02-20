@@ -48,16 +48,20 @@ Create an .env file in the root directory and fill it out using the .env.example
 
 Required Environment Variables:
 
-- 🌍 REPLICATION_REGION: AWS region where your DMS replication task is located.
-- 🔑 REPLICATION_ACCESS_KEY_ID: Your AWS access key ID.
-- 🔒 REPLICATION_SECRET_ACCESS_KEY: Your AWS secret access key.
-- 📜 REPLICATION_TASK_ARN: The ARN of the DMS replication task.
-- 🖥️ REPLICATION_INSTANCE_ARN: The ARN of the DMS replication instance.
+```env
+🌍 REPLICATION_REGION: AWS region where your DMS replication task is located.
+🔑 REPLICATION_ACCESS_KEY_ID: Your AWS access key ID.
+🔒 REPLICATION_SECRET_ACCESS_KEY: Your AWS secret access key.
+📜 REPLICATION_TASK_ARN: The ARN of the DMS replication task.
+🖥️ REPLICATION_INSTANCE_ARN: The ARN of the DMS replication instance.
+```
 
 Optional Environment Variables:
 
-- DELAY_SECONDS (default every 60 seconds for a display message)
-- RESTART_AFTER_FAILURE (default false, set true if you want the script to keep going and retry on a failed task)
+```env
+🕰️ DELAY_SECONDS: (default every 60 seconds for a display message)
+🔄 RESTART_AFTER_FAILURE: (default false, set true if you want the script to keep going and retry on a failed task)
+```
 
 ## 🛠️ Build and Run
 
