@@ -28,7 +28,9 @@ export const startDMSReplication = async () => {
       return;
     }
 
-    const validStates = ["creating", "ready", "starting", "running"];
+    const shouldRestartAfterFailure = process.env.RESTART_AFTER_FAILURE === "true";
+
+    const validStates = ["creating", "ready", "starting", "running", shouldRestartAfterFailure ? "failed" : ""];
     if (validStates.includes(taskStatus)) {
       console.log(`Task is already in ${taskStatus} state. Entering waiting loop.`);
       await waitForTaskCompletion();

@@ -1,29 +1,52 @@
 # 🚀 AWS DMS Automation Script 🎯
 
-## This project is an automation script for managing AWS Database Migration Service (DMS) replication tasks. It is built using TypeScript and utilizes the AWS SDK for JavaScript
+Effortlessly manage your AWS Database Migration Service (DMS) replication tasks using this automation script, built with TypeScript and the AWS SDK for JavaScript. Save costs and streamline your data migrations!
 
-### 🚀 Usage
+---
 
-This script helps you start AWS DMS replication tasks with ease. It
+## 📋 Features
 
-- ✅ Validates required environment variables.
-- ✅ Initializes the AWS DMS client.
-- ✅ Manages the replication tasks automatically.
-- ✅ Waits in a loop, while the status is updated to the screen every 60 seconds (by default).
+- ✅ Validates Required Environment Variables – Ensures all necessary configurations are set.
+- ✅ Initializes AWS DMS Client – Seamless integration with AWS.
+- ✅ Manages Replication Tasks – Automates the start and stop of tasks efficiently.
+- ✅ Real-Time Status Updates – Monitors and updates the task status every 60 seconds (configurable).
 
-### 🚀 Purpose
+---
 
-#### This script exists because I'm cost-conscious. 💰😆 Instead of letting an expensive dms.r5.large instance run indefinitely, I use this automation to start, and manage AWS DMS replication tasks efficiently
+## 🎯 Purpose
 
-- ✅ Transfers data using a dms.r5.large instance for faster migrations.
-- ✅ Allows me to manually downgrade the instance after migration to save costs.
-- ✅ Prevents unnecessary AWS charges by stopping tasks when not in use.
+### 💰 Cost-Effective Migration Management
 
-Because why pay more when a little automation can keep things efficient? 🤖💸
+Why let an expensive **dms.r5.32xlarge** instance run indefinitely? This script automates the start and stop of DMS replication tasks, allowing you to:
 
-### 🔧 Environment Variables
+- 🚀 Use a **dms.r6i.32xlarge** instance for faster data transfers if you fancy.
+- 🔄 Manually downgrade the instance post-migration to minimize costs.
+- 💸 Avoid unnecessary charges by stopping tasks when not needed.
 
-Set the following environment variables in your .env file
+Because a little automation goes a long way in saving costs! 🤖💵
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```sh
+git clone git@github.com:kcflan/aws-dms-automation.git
+cd aws-dms-automation
+```
+
+### 2. Install the dependencies
+
+```sh
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create an .env file in the root directory and fill it out using the .env.example as a guide.
+
+Required Environment Variables:
 
 - 🌍 REPLICATION_REGION: AWS region where your DMS replication task is located.
 - 🔑 REPLICATION_ACCESS_KEY_ID: Your AWS access key ID.
@@ -31,48 +54,34 @@ Set the following environment variables in your .env file
 - 📜 REPLICATION_TASK_ARN: The ARN of the DMS replication task.
 - 🖥️ REPLICATION_INSTANCE_ARN: The ARN of the DMS replication instance.
 
-### 📂 Project Structure
+Optional Environment Variables:
+
+- DELAY_SECONDS (default every 60 seconds for a display message)
+- RESTART_AFTER_FAILURE (default false, set true if you want the script to keep going and retry on a failed task)
+
+## 🛠️ Build and Run
+
+### 4. Build the Project
 
 ```sh
-aws-dms-automation
-├── src
-│   └── index.ts           # 🚀 Entry point of the script
-├── package.json           # 📦 npm configuration file
-├── tsconfig.json          # ⚙️ TypeScript configuration file
-├── README.md              # 📖 Project documentation
-└── .env.example           # 🔑 Example .env file
+npm run build
 ```
 
-### ⚡ Installation
-
-#### Clone the repository
-
-```sh
-git clone git@github.com:kcflan/aws-dms-automation.git
-cd aws-dms-automation
-```
-
-#### Install the dependencies
-
-```sh
-npm install
-```
-
-#### Run the script
+### 5. Run the Script
 
 ```sh
 npm run start
 ```
 
-### 🐳 Want to run this in  Docker? No problem 🚀
+### 🐳 Docker Support
 
-#### Build the Docker image
+Build the Docker Image
 
 ```sh
 npm run docker:build
 ```
 
-#### Run the Docker container
+Run the Docker Container
 
 ```sh
 npm run docker:run
@@ -80,6 +89,6 @@ npm run docker:run
 
 ### 📜 License
 
-### This project is licensed under the MIT License. See the LICENSE file for more details
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-Happy automating! 🎉🚀
+Happy automating, you frugal bees! 🎉🚀🪙🐝
