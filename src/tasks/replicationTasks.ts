@@ -10,10 +10,7 @@ import { getReplicationTaskStatus, waitForTaskCompletion } from "./taskUtils";
 dotenv.config();
 
 const determineStartType = async (taskStatus: string): Promise<StartReplicationTaskTypeValue> => {
-  if (taskStatus && taskStatus !== "creating" && taskStatus !== "ready") {
-    return "resume-processing";
-  }
-  return "start-replication";
+  return taskStatus === "ready" || taskStatus === "creating" ? "start-replication" : "resume-processing";
 };
 
 export const startDMSReplication = async () => {
@@ -30,7 +27,7 @@ export const startDMSReplication = async () => {
 
     const shouldRestartAfterFailure = process.env.RESTART_AFTER_FAILURE === "true";
 
-    const validStates = ["creating", "ready", "starting", "running", shouldRestartAfterFailure ? "failed" : ""];
+    const validStates = ["creating", "starting", "running", shouldRestartAfterFailure ? "failed" : ""];
     if (validStates.includes(taskStatus)) {
       console.log(`Task is already in ${taskStatus} state. Entering waiting loop.`);
       await waitForTaskCompletion();
