@@ -13,21 +13,21 @@ const determineStartType = async (taskStatus: string): Promise<StartReplicationT
   return taskStatus === "ready" || taskStatus === "creating" ? "start-replication" : "resume-processing";
 };
 
+const shouldRestartAfterFailure = process.env.RESTART_AFTER_FAILURE === "true";
+const invalidStates = ["stopping", "testing", "unknown"];
+const validStates = ["creating", "running", "starting", shouldRestartAfterFailure ? "failed" : ""];
+
 export const startDMSReplication = async () => {
   try {
     const taskStatus = (await getReplicationTaskStatus()) ?? "unknown";
 
     const startType = await determineStartType(taskStatus);
 
-    const invalidStates = ["testing", "unknown", "stopping"];
     if (invalidStates.includes(taskStatus)) {
       console.error(`❌ Task is in "${taskStatus}" state. Cannot start the replication process.`);
       return;
     }
 
-    const shouldRestartAfterFailure = process.env.RESTART_AFTER_FAILURE === "true";
-
-    const validStates = ["creating", "starting", "running", shouldRestartAfterFailure ? "failed" : ""];
     if (validStates.includes(taskStatus)) {
       console.log(`Task is already in ${taskStatus} state. Entering waiting loop.`);
       await waitForTaskCompletion();
