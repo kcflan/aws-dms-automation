@@ -15,9 +15,11 @@ Effortlessly manage your AWS Database Migration Service (DMS) replication tasks 
 
 ## 🎯 Purpose
 
+[My $77 lesson](./MIGRATION.md). I had to start replication instance's task over and over, so I automated it from the command line instead of watching the UI.
+
 ### 💰 Cost-Effective Migration Management
 
-Why let an expensive **dms.r5.32xlarge** instance run indefinitely? This script automates the start and stop of DMS replication tasks, allowing you to:
+Why let an expensive **dms.r6i.32xlarge** instance run indefinitely? This script automates the start and stop of DMS replication tasks, allowing you to:
 
 - 🚀 Use a **dms.r6i.32xlarge** instance for faster data transfers if you fancy.
 - 🔄 Manually downgrade the instance post-migration to minimize costs.
